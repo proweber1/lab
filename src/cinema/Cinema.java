@@ -67,11 +67,13 @@ public class Cinema {
      * @param dayName Название дня
      */
     void removeSeance(Seance seance, String dayName) {
-        weekSchedule.forEach((k, v) -> {
-            if (k.getName().equalsIgnoreCase(dayName)) {
-                v.removeSeance(seance);
-            }
-        });
+        Days day = Days.valueOf(dayName);
+        if (!weekSchedule.containsKey(day)) {
+            return;
+        }
+
+        Schedule schedule = weekSchedule.get(day);
+        schedule.removeSeance(seance);
     }
 
     /**

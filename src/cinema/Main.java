@@ -14,8 +14,12 @@ public class Main {
         final Movie movie1 = new Movie("Беты", Time.from(1, 20));
         cinema.addMovie(movie1, Time.from(11, 10));
 
-        cinema.removeSeance(seance, "понедельник");
+        cinema.removeSeance(seance, "MONDAY");
 
+        System.out.println(cinema);
+        cinema.removeMovie(movie);
+
+        System.out.println("-----------------------");
         System.out.println(cinema);
     }
 }
