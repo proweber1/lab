@@ -1,7 +1,6 @@
 package cinema;
 
 public class Time implements Comparable<Time> {
-
     private final static int MINUTES_MIN = 0;
     private final static int MINUTES_MAX = 59;
     private final static int HOUR_MIN = 0;
@@ -10,20 +9,37 @@ public class Time implements Comparable<Time> {
     private int min;
     private int hour;
 
+    /**
+     * @return Минуты
+     */
     int getMin() {
         return min;
     }
 
+    /**
+     * Устанавливает минуты, а так же проверяет что они входят в правильный
+     * диапазон значений
+     *
+     * @param min Минуты
+     */
     void setMin(int min) {
         testRange(min, MINUTES_MAX, MINUTES_MIN, "Минуты должны быть в периоде от 0 до 59");
 
         this.min = min;
     }
 
+    /**
+     * @return Часы
+     */
     int getHour() {
         return hour;
     }
 
+    /**
+     * Установка часов, а так же проверка того что они входят в нужный диапазон значений
+     *
+     * @param hour Часы
+     */
     void setHour(int hour) {
         testRange(hour, HOUR_MAX, HOUR_MIN, "Часы должны быть в периоде между 0 и 24");
 

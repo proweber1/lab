@@ -4,6 +4,11 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Cinema {
+
+    /**
+     * Используем трюк с анонимным классом, чтобы заполнить мапу
+     * расписаний при создании объекта {@link Cinema}
+     */
     private final Map<Days, Schedule> weekSchedule = new TreeMap<Days, Schedule>(){{
         for (Days day: Days.values()) {
             put(day, new Schedule());
@@ -68,10 +73,6 @@ public class Cinema {
      */
     void removeSeance(Seance seance, String dayName) {
         Days day = Days.valueOf(dayName);
-        if (!weekSchedule.containsKey(day)) {
-            return;
-        }
-
         Schedule schedule = weekSchedule.get(day);
         schedule.removeSeance(seance);
     }
