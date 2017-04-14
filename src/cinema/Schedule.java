@@ -24,9 +24,6 @@ public class Schedule {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        seances.forEach(seance -> stringBuilder.append(seance).append("\n"));
-
-        return stringBuilder.toString();
+        return seances.toString();
     }
 }
