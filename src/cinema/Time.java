@@ -47,16 +47,24 @@ public class Time implements Comparable<Time> {
     }
 
     /**
+     * Возвращает время в виде минут
+     *
+     * @return Минуты
+     */
+    int asMinutes() {
+        return (getHour() * 60) + getMin();
+    }
+
+    /**
      * Прибавляет к объекту времени еще один объект времени
      *
      * @param time Время которое надо прибавить
      * @return Новое время
      */
     Time plus(Time time) {
-        int hours = getHour() + time.getHour();
-        int minutes = getMin() + time.getMin();
+        int minutes = ((time.getHour() + getHour()) * 60) + (getMin() + time.getMin());
 
-        return from(hours, minutes);
+        return from(minutes);
     }
 
     /**
@@ -99,11 +107,24 @@ public class Time implements Comparable<Time> {
     }
 
     /**
+     * Создает новый объект времени из количества минут
+     *
+     * @param minutes Минуты
+     * @return Объект времени
+     */
+    private static Time from(int minutes) {
+        final int hours = minutes / 60;
+        final int mins = (minutes % 60);
+
+        return from(hours, mins);
+    }
+
+    /**
      * @param o Объект времени с которым нужно сравнить текущий
      * @return результат сравнения
      */
     @Override
     public int compareTo(Time o) {
-        return hour != o.hour ? hour - o.hour : min - o.min;
+        return Integer.compare(asMinutes(), o.asMinutes());
     }
 }

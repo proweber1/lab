@@ -72,9 +72,21 @@ public class Seance implements Comparable<Seance> {
         return Objects.hash(movie, startTime, endTime);
     }
 
+    /**
+     * Если один из сеансов входит в промежуток начала и конца другого сеанса, то считается что они
+     * равны, так как это наложение, а если не входит, то просто выясняем какой из них начинается позже,
+     * а какой раньше
+     *
+     * @param o Объект сеанса
+     * @return результат сравнения
+     */
     @Override
     public int compareTo(Seance o) {
-        return startTime.compareTo(o.getStartTime());
+        if (o.endTime.compareTo(startTime) < 0) {
+            return 1;
+        }
+
+        return (o.startTime.compareTo(endTime) > 0) ? -1 : 0;
     }
 
     @Override
