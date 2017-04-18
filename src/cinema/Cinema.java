@@ -34,14 +34,11 @@ public class Cinema {
      * @param times Время на которое нужно его добавить
      */
     void addMovie(Movie movie, Time... times) {
-        weekSchedule.forEach((k, v) -> {
-            for (Time time: times) {
-                final Seance seance = new Seance(movie, time);
+        for (Time time: times) {
+            final Seance seance = new Seance(movie, time);
 
-                checkWorkTime(seance);
-                v.addSeance(seance);
-            }
-        });
+            addSeance(seance);
+        }
     }
 
     /**

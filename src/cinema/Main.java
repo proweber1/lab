@@ -12,7 +12,7 @@ public class Main {
         cinema.addSeance(seance);
 
         final Movie movie1 = new Movie("Беты", Time.from(1, 20));
-        cinema.addMovie(movie1, Time.from(11, 55));
+        cinema.addMovie(movie1, Time.from(10, 0));
 
         cinema.removeSeance(seance, "MONDAY");
 

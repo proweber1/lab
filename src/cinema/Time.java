@@ -9,6 +9,10 @@ public class Time implements Comparable<Time> {
     private int min;
     private int hour;
 
+    private Time() {
+
+    }
+
     /**
      * @return Минуты
      */
